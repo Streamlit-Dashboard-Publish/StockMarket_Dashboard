@@ -1,0 +1,5 @@
+finance-datareader
+plotly
+matplotlib
+koreanize-matplotlib
+
