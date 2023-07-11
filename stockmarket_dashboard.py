@@ -14,7 +14,7 @@ import plotly.graph_objects as go
 
 
 
-\
+
 st.set_page_config(
     page_title = '주식 차트 대시보드',
     page_icon = '📈',
