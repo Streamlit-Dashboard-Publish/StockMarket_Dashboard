@@ -39,7 +39,7 @@ fig.update_layout(
 
 st.plotly_chart(fig)
 
-
+st.write(fdr.StockListing('Krx')['Marcap'].sort_values())
 
 # 종목 선택 
 
