@@ -13,8 +13,18 @@ import pandas as pd
 import plotly.graph_objects as go
 
 
-# 제목
-st.title("주식 차트 대시보드")
+
+\
+st.set_page_config(
+    page_title = '주식 차트 대시보드',
+    page_icon = '📈',
+    layout = 'wide',
+    initial_sidebar_state = 'collapsed',
+)
+
+# # 제목
+# st.title("주식 차트 대시보드")
+
 
 # 주식 시장 종목 선택 
 
