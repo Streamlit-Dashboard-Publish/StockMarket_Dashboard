@@ -22,8 +22,8 @@ st.set_page_config(
     initial_sidebar_state = 'collapsed',
 )
 
-# # 제목
-# st.title("주식 차트 대시보드")
+# 제목
+st.title("주식 차트 대시보드")
 
 
 # 주식 시장 종목 선택 
