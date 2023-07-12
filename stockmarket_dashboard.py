@@ -81,7 +81,7 @@ for i in range(len(list_stock)):
 # Tab 생성 + 그래프 생성 
 tab1, tab2 = st.tabs(['라인 그래프', '캔들스틱 그래프'])
 with tab1:
-    # st.markdown('**라인 그래프**')
+    st.markdown('**라인 그래프**')
     # 라인 그래프 생성 
     df = fdr.DataReader('KRX:'+','.join(list_stock), start_date_str, end_date_str)
 
@@ -96,16 +96,17 @@ with tab1:
         st.line_chart(fdr.DataReader(list_stock[i], start_date_str, end_date_str)['Close'])
 
 with tab2:
-    # st.markdown('**캔들스틱 그래프**')
+    st.markdown('**캔들스틱 그래프**')
     # 캔들스틱 그래프 생성 
     for i in range(len(list_stock)):
-        st.markdown(f'**{stock[i]}**')
+        # st.markdown(f'**{stock[i]}**')
         df = fdr.DataReader(list_stock[i], start_date_str, end_date_str)
         fig = go.Figure(data=[go.Candlestick(x=df.index,
                                  open=df['Open'],
                                  high=df['High'],
                                  low=df['Low'],
                                  close=df['Close'])])
+        fig.update_layout(title_text=f'{stock[i]}')
         st.plotly_chart(fig)
 
 
