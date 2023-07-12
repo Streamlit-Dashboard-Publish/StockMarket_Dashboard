@@ -48,8 +48,7 @@ fig.update_layout(
 st.plotly_chart(fig)
 
 
-# 종목 선택 
-
+# 종목 선택 생성 
 list_kospi = fdr.StockListing('KOSPI')
 stocks = list_kospi['Name'].tolist()
 stock = st.sidebar.multiselect('종목을 선택해주세요.', stocks) 
@@ -58,7 +57,8 @@ list_stock = []
 for i in stock:
     list_stock.append(list_kospi['Code'][list_kospi['Name'] == i].values[0])
 
-# 사용자로부터 시작 날짜와 종료 날짜 입력 받기
+
+# 시작일과 종료일 생성 
 col1, col2 = st.columns(2)
 with col1:
     start_date = st.sidebar.date_input('시작 날짜', datetime.date(2022,1,1))
@@ -78,11 +78,10 @@ for i in range(len(list_stock)):
               
 
 
-
-# Tab 생성 
+# Tab 생성 + 그래프 생성 
 tab1, tab2 = st.tabs(['라인 그래프', '캔들스틱 그래프'])
 with tab1:
-    
+    # 라인 그래프 생성 
     df = fdr.DataReader('KRX:'+','.join(list_stock), start_date_str, end_date_str)
 
     if len(stock) == 1:
@@ -91,13 +90,12 @@ with tab1:
         df.columns = stock
         st.line_chart(df)
     
-
     for i in range(len(list_stock)):
         st.subheader(f'{stock[i]}')
         st.line_chart(fdr.DataReader(list_stock[i], start_date_str, end_date_str)['Close'])
 
 with tab2:
-
+    # 캔들스틱 그래프 생성 
     for i in range(len(list_stock)):
         st.subheader(f'{stock[i]}')
         df = fdr.DataReader(list_stock[i], start_date_str, end_date_str)
