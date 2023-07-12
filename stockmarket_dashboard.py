@@ -99,7 +99,7 @@ with tab2:
     st.markdown('**캔들스틱 그래프**')
     # 캔들스틱 그래프 생성 
     for i in range(len(list_stock)):
-        st.subheader(f'{stock[i]}')
+        st.markdown(f'**{stock[i]}**')
         df = fdr.DataReader(list_stock[i], start_date_str, end_date_str)
         fig = go.Figure(data=[go.Candlestick(x=df.index,
                                  open=df['Open'],
