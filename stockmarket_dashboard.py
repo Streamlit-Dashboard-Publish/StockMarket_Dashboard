@@ -50,7 +50,7 @@ st.plotly_chart(fig)
 
 # 종목 선택 생성 
 list_kospi = fdr.StockListing('KOSPI')
-stocks = list_kospi['Name'].loc[:10].tolist()
+stocks = list_kospi['Name'].loc[:99].tolist()
 stock = st.sidebar.multiselect('종목을 선택해주세요.', stocks) 
 
 list_stock = []
