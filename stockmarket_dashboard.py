@@ -50,7 +50,7 @@ st.plotly_chart(fig)
 
 # 종목 선택 생성 
 list_kospi = fdr.StockListing('KOSPI')
-stocks = list_kospi['Name'].tolist()
+stocks = list_kospi['Name'].loc[:9].tolist()
 stock = st.sidebar.multiselect('종목을 선택해주세요.', stocks) 
 
 list_stock = []
@@ -63,7 +63,7 @@ col1, col2 = st.columns(2)
 with col1:
     start_date = st.sidebar.date_input('시작 날짜', datetime.date(2022,1,1))
 with col2:
-    end_date = st.sidebar.date_input('종료 날짜')
+    end_date = st.sidebar.date_input('종료 날짜', datetime.datetime.now()-datetime.timedelta(days=1))
 
 # 날짜를 문자열로 변환
 start_date_str = start_date.strftime('%Y-%m-%d')
